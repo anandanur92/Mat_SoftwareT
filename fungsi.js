@@ -51,3 +51,11 @@ exports.register = function(req, res) {
         }
     });
 };
+
+ public function testAkarMath()
+    {
+        $akm = new WordCount();
+        $a = 9;
+        $akrMath = $akm->akarMath($a);
+        $this->assertEquals(3, $akrMath);
+    }
