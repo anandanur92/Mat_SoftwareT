@@ -31,3 +31,23 @@ exports.getAll = function(req, res) {
         }
     });
 };
+
+exports.register = function(req, res) {
+    
+    var username = req.body.username;
+    var fullName = req.body.fullname;
+    var password = req.body.password;
+    var email = req.body.email;
+    var location = req.body.location;
+    var createdAt = Date.now();
+    var updatedAt = Date.now();
+    connection.query('INSERT INTO user (username,fullName, email,password,location,createdAt,updatedAt) values (?,?,?,?,?,?,?)',
+    [ username,fullName,email,password,location,createdAt,updatedAt ], 
+    function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok(rows, "Success add User!", res)
+        }
+    });
+};
